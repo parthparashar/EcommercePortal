@@ -10,12 +10,13 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
 import { Link } from 'react-router-dom';
 
-export default function ImgMediaCard({data}) {
+export default function ImgMediaCard({ data }) {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     dispatch(addToCart(data));
   };
+
   return (
     <Card 
       sx={{
@@ -30,24 +31,31 @@ export default function ImgMediaCard({data}) {
         boxShadow: "2px 4px 32px 0px rgba(0,0,0.1)" ,
       }}
     >
-      <CardMedia
-        component="img"
-        alt={data.title}
-        height="200"
-        image={data.images[0]}
-      />
+      <Link to={`/products/${data.id}`} style={{ textDecoration: 'none' }}>
+        <CardMedia
+          component="img"
+          alt={data.title}
+          height="200"
+          image={data.images[0]}
+          sx={{ cursor: 'pointer' }}
+        />
+      </Link>
+
       <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h5" component="div">
-          {data.title}
-        </Typography>
+        <Link to={`/products/${data.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Typography gutterBottom variant="h5" component="div" sx={{ cursor: 'pointer' }}>
+            {data.title}
+          </Typography>
+        </Link>
         <Typography gutterBottom variant="h6" component="div">
           ${data.price}
         </Typography>
       </CardContent>
+
       <CardActions sx={{ justifyContent: 'center' }}>
-          <Button size="" fullWidth color="primary" variant="contained" value={data.id} onClick={handleAddToCart}>
-            <AddShoppingCartOutlined />  ADD TO CART
-          </Button>
+        <Button size="" fullWidth color="primary" variant="contained" value={data.id} onClick={handleAddToCart}>
+          <AddShoppingCartOutlined /> ADD TO CART
+        </Button>
       </CardActions>
     </Card>
   );

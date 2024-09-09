@@ -5,11 +5,11 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import HomePage from './components/HomePage';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
-
+import Header from './components/Header';
 // Define the main App component
 const AppLayout = () => (
   <>
-    <h1>E-commerce App</h1>
+    <Header />
     <Outlet /> {/* Renders child routes */}
   </>
 );
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/product/:productId",
+        path: "/products/:productId",
         element: <ProductDetails />,
       },
       {

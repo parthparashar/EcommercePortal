@@ -4,21 +4,7 @@ import { Grid, InputAdornment, TextField } from "@mui/material";
 import ImgMediaCard from "./ImgMediaCard";
 const Products = () => {
 const [data, setData] = useState([]);
-  const [productData, setProductData] = useState([]);
-  const [debounceTimeout,setDebounceTimeout] = useState(null);
-  const [productNotFound, updateProductNotFound] = useState(false)
-
-  
-
-  const debounceSearch = (event, debounceTimeout) => {
-    if(debounceTimeout){
-      clearTimeout(debounceTimeout);
-    }
-    let timerId = setTimeout(() => {     
-    //   performSearch(event.target.value);
-    },800)
-    setDebounceTimeout(timerId);
-  };
+ 
 
   useEffect(() => {
     const fetchData = async () => {
